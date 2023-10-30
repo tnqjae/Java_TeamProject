@@ -3,7 +3,7 @@ import java.awt.*;
 public class MainFrame extends JFrame {
 
     public JLabel backGround(){
-        ImageIcon bg = new ImageIcon("./img/background.png");
+        ImageIcon bg = new ImageIcon("./img/StartBackground.jpeg");
         JLabel background = new JLabel(bg);
         background.setSize(1200,750);
         background.setLocation(0,0);
@@ -12,7 +12,7 @@ public class MainFrame extends JFrame {
     }
 
     public JLabel TitleBar() {
-        ImageIcon titleImage = new ImageIcon("./img/img.png");
+        ImageIcon titleImage = new ImageIcon("./img/title.png");
         JLabel title = new JLabel(titleImage);
         title.setSize(titleImage.getIconWidth(), titleImage.getIconHeight());
         title.setLocation(420, 80);
