@@ -57,25 +57,15 @@ public class MainFrame extends JFrame {
 
     private void addStartButton(){
         JLabel stbutton = new JLabel(startButton);
-        int newWidth = 260; // 원하는 너비로 변경하세요
-        int newHeight = 80; // 원하는 높이로 변경하세요
-
-        stbutton.setIcon(new ImageIcon(startButton.getImage().getScaledInstance(newWidth, newHeight, Image.SCALE_DEFAULT)));
-
-        stbutton.setSize(newWidth, newHeight);
-        stbutton.setLocation(80, 350);
+        stbutton.setSize(startButton.getIconWidth(), startButton.getIconHeight());
+        stbutton.setLocation(60, 380);
         add(stbutton);
     }
 
     private void addRuleButton(){
         JLabel rulebutton = new JLabel(ruleButton);
-        int newWidth = 260; // 원하는 너비로 변경하세요
-        int newHeight = 80; // 원하는 높이로 변경하세요
-
-        rulebutton.setIcon(new ImageIcon(ruleButton.getImage().getScaledInstance(newWidth, newHeight, Image.SCALE_DEFAULT)));
-
-        rulebutton.setSize(newWidth, newHeight);
-        rulebutton.setLocation(80, 380);
+        rulebutton.setSize(ruleButton.getIconWidth(), ruleButton.getIconHeight());
+        rulebutton.setLocation(60, 500);
         add(rulebutton);
     }
 }
