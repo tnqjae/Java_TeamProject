@@ -1,10 +1,13 @@
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class StartFrame extends JFrame {
     ImageIcon bg;
     ImageIcon titleImage;
-    ImageIcon startButton;
-    ImageIcon ruleButton;
+    ImageIcon start;
+    ImageIcon rule;
+
     public StartFrame() {
         super("Hogwarts Escape");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -15,60 +18,51 @@ public class StartFrame extends JFrame {
             @Override
             public void run() {
                 loadImages(); //Load Image
-                addTitle(); //Add Title
-                addStartButton();//Add Start Button
-                addRuleButton();//Add Rule Button
-                // 이미지 로드 후 UI 업데이트
-                SwingUtilities.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        addBackground(); // 배경 추가
-                        setSize(1200, 750);
-                        setVisible(true);
-                    }
-                });
+                addComponent();
+                UI();
             }
         });
-
         thread.start();
     }
+
     //Load Image Location
     private void loadImages() {
         bg = new ImageIcon("./img/StartBackground.jpeg");
         titleImage = new ImageIcon("./img/title.png");
-        startButton = new ImageIcon("./img/Start.png");
-        ruleButton = new ImageIcon("./img/Rule.png");
+        start = new ImageIcon("./img/Start.png");
+        rule = new ImageIcon("./img/Rule.png");
     }
 
-    //All add component process -> make Method
-    private void addBackground() {
-        JLabel background = new JLabel(bg);
-        background.setSize(bg.getIconWidth(), bg.getIconHeight());
-        background.setLocation(0, 0);
-        add(background);
+    //Create Label
+    private JLabel createLabel(ImageIcon icon, int x, int y){
+        JLabel la = new JLabel(icon);
+        la.setLocation(x,y);
+        la.setSize(icon.getIconWidth(),icon.getIconHeight());
+        return la;
     }
 
-    //Add Title image
-    private void addTitle() {
-        JLabel title = new JLabel(titleImage);
-        title.setSize(titleImage.getIconWidth(), titleImage.getIconHeight());
-        title.setLocation(420, 80);
-        add(title);
+    //add Listener
+    private void addEventListener(JLabel la, MouseAdapter listener){
+        la.addMouseListener(listener);
     }
 
-    //Add Start Button
-    private void addStartButton(){
-        JLabel stbutton = new JLabel(startButton);
-        stbutton.setSize(startButton.getIconWidth(), startButton.getIconHeight());
-        stbutton.setLocation(60, 380);
-        add(stbutton);
-    }
+    //Create and add component
+    private void addComponent(){
+        JLabel startLabel = createLabel(start, 60, 380);
+        addEventListener(startLabel, new StartClickEvent());
+        add(startLabel);
 
-    //Add Rule Button
-    private void addRuleButton(){
-        JLabel rulebutton = new JLabel(ruleButton);
-        rulebutton.setSize(ruleButton.getIconWidth(), ruleButton.getIconHeight());
-        rulebutton.setLocation(60, 500);
-        add(rulebutton);
+        JLabel ruleLabel = createLabel(rule, 60,500);
+        addEventListener(ruleLabel,new RuleClickEvent());
+        add(ruleLabel);
+
+        add(createLabel(titleImage,420,80));//title
+        add(createLabel(bg, 0,0));//background
+    }
+    private void UI(){
+        SwingUtilities.invokeLater(() ->{
+            setSize(1200, 750);
+            setVisible(true);
+        });
     }
 }
