@@ -24,6 +24,7 @@ class StartClickEvent extends MouseAdapter {
     }
     public void mouseClicked(MouseEvent e) {
         new Init();
+        GameStart start = new GameStart();
     }
 
 }

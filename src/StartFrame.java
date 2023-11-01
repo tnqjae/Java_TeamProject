@@ -3,30 +3,39 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class StartFrame extends JFrame {
-    ImageIcon bg;
-    ImageIcon titleImage;
-    ImageIcon start;
-    ImageIcon rule;
+    protected ImageIcon bg;
+    protected ImageIcon titleImage;
+    protected ImageIcon start;
+    protected ImageIcon rule;
 
-    public StartFrame() {
+    protected StartFrame(){}
+
+    public StartFrame(JFrame mainframe) {
         super("Hogwarts Escape");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null);
+        mainframe.getContentPane();
+        mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainframe.setLayout(null);
+
+        ActiveFunction active = new ActiveFunction();
 
         //Using Thread to Load Image Process.
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                loadImages(); //Load Image
-                addComponent();
-                UI();
+                active.loadImages(); //Load Image
+                active.addComponent();
+                active.UI();
             }
         });
         thread.start();
     }
 
-    //Load Image Location
-    private void loadImages() {
+}
+
+class ActiveFunction extends StartFrame{
+    protected ActiveFunction(){}
+
+    protected void loadImages() {
         bg = new ImageIcon("./img/StartBackground.jpeg");
         titleImage = new ImageIcon("./img/title.png");
         start = new ImageIcon("./img/Start.png");
@@ -34,7 +43,7 @@ public class StartFrame extends JFrame {
     }
 
     //Create Label
-    private JLabel createLabel(ImageIcon icon, int x, int y){
+    protected JLabel createLabel(ImageIcon icon, int x, int y){
         JLabel la = new JLabel(icon);
         la.setLocation(x,y);
         la.setSize(icon.getIconWidth(),icon.getIconHeight());
@@ -42,27 +51,25 @@ public class StartFrame extends JFrame {
     }
 
     //add Listener
-    private void addEventListener(JLabel la, MouseAdapter listener){
+    protected void addEventListener(JLabel la, MouseAdapter listener){
         la.addMouseListener(listener);
     }
 
     //Create and add component
-    private void addComponent(){
+    protected void addComponent(){
         JLabel startLabel = createLabel(start, 60, 380);
         addEventListener(startLabel, new StartClickEvent());
-        add(startLabel);
+        Main.setFrame.add(startLabel);
 
         JLabel ruleLabel = createLabel(rule, 60,500);
         addEventListener(ruleLabel,new RuleClickEvent());
-        add(ruleLabel);
+        Main.setFrame.add(ruleLabel);
 
-        add(createLabel(titleImage,420,80));//title
-        add(createLabel(bg, 0,0));//background
+        Main.setFrame.add(createLabel(titleImage,420,80));//title
+        Main.setFrame.add(createLabel(bg, 0,0));//background
     }
-    private void UI(){
-        SwingUtilities.invokeLater(() ->{
-            setSize(1200, 750);
-            setVisible(true);
-        });
+    protected void UI(){
+        Main.setFrame.setSize(1200, 750);
+        Main.setFrame.setVisible(true);
     }
 }
