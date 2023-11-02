@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.MouseAdapter;
 
 class ActiveFunction extends StartFrame{
-    protected ActiveFunction(){}
+    public ActiveFunction(){}
 
     protected void loadImages() {
         bg = new ImageIcon("./img/StartBackground.jpeg");
@@ -36,9 +36,5 @@ class ActiveFunction extends StartFrame{
 
         Main.setFrame.add(createLabel(titleImage,420,80));//title
         Main.setFrame.add(createLabel(bg, 0,0));//background
-    }
-    protected void UI(){
-        Main.setFrame.setSize(1200, 750);
-        Main.setFrame.setVisible(true);
     }
 }
