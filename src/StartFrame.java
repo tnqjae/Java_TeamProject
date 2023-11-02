@@ -65,7 +65,8 @@ class ActiveFunction extends StartFrame{
         addEventListener(ruleLabel,new RuleClickEvent());
         Main.setFrame.add(ruleLabel);
 
-        Main.setFrame.add(createLabel(titleImage,420,80));//title
+        Main.setFrame.add(createLabel(titleImage,350
+                ,80));//title
         Main.setFrame.add(createLabel(bg, 0,0));//background
     }
     protected void UI(){

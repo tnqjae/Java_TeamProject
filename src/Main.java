@@ -1,5 +1,5 @@
 import javax.swing.*;
-public class Main extends JFrame{
+public class Main{
     //Standardization of Frames
     public static JFrame setFrame = new JFrame();
 
