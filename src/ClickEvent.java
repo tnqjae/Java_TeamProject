@@ -15,7 +15,6 @@ class Init { //Init JFrame class
         });
         thread.start();
     }
-
 }
 class StartClickEvent extends MouseAdapter {
 
