@@ -3,34 +3,22 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class StartFrame extends JFrame{
+    public static MusicPlay music;
     protected ImageIcon bg;
     protected ImageIcon titleImage;
     protected ImageIcon start;
     protected ImageIcon rule;
 
     protected StartFrame(){}
-    public StartFrame(JFrame startFrame) {
-        frameSetting(startFrame);
+    public StartFrame(JFrame mainframe) {
+        frameSetting(mainframe);
 
-<<<<<<< HEAD
         MainDisplay runable = new MainDisplay();
         Thread th = new Thread(runable);
         th.start();
         mainframe.setLocation(300,300);
 
-=======
         ActiveFunction active = new ActiveFunction();
-        //Using Thread to Load Image Process.
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                active.loadImages(); //Load Image
-                active.addComponent();
-                showFrame(startFrame);
-            }
-        });
-        thread.start();
->>>>>>> 4b3beeea694279d912487b3614021d05e39fccfc
     }
 
     public void frameSetting(JFrame frame){
@@ -45,17 +33,16 @@ public class StartFrame extends JFrame{
     }
 }
 
-<<<<<<< HEAD
 class ActiveFunction extends StartFrame{
     protected ActiveFunction(){}
-
-    protected void loadImages() {
+    protected void loadComponent() {
         bg = new ImageIcon("./img/StartBackground.jpeg");
         titleImage = new ImageIcon("./img/title.png");
         start = new ImageIcon("./img/Start.png");
         rule = new ImageIcon("./img/Rule.png");
+        //Load music
+        music = new MusicPlay("./music/herrypotter.wav");
     }
-
     //Create Label
     protected JLabel createLabel(ImageIcon icon, int x, int y){
         JLabel la = new JLabel(icon);
@@ -63,25 +50,24 @@ class ActiveFunction extends StartFrame{
         la.setSize(icon.getIconWidth(),icon.getIconHeight());
         return la;
     }
-
     //add Listener
     protected void addEventListener(JLabel la, MouseAdapter listener){
         la.addMouseListener(listener);
     }
-
     //Create and add component
     protected void addComponent(){
+        //Set Title
+        Main.setFrame.add(createLabel(titleImage,350,80));
+        //Set Background
+        Main.setFrame.add(createLabel(bg, 0,0));
+        //Set Start Button
         JLabel startLabel = createLabel(start, 60, 380);
         addEventListener(startLabel, new StartClickEvent());
         Main.setFrame.add(startLabel);
-
+        //Set Rule Button
         JLabel ruleLabel = createLabel(rule, 60,500);
         addEventListener(ruleLabel,new RuleClickEvent());
         Main.setFrame.add(ruleLabel);
-
-        Main.setFrame.add(createLabel(titleImage,350
-                ,80));//title
-        Main.setFrame.add(createLabel(bg, 0,0));//background
     }
     protected void UI(){
         Main.setFrame.setSize(1200, 750);
@@ -89,15 +75,14 @@ class ActiveFunction extends StartFrame{
     }
 }
 
-class MainDisplay extends ActiveFunction implements Runnable{
-        ActiveFunction active = new ActiveFunction();
+class MainDisplay extends ActiveFunction implements Runnable {
+    ActiveFunction active = new ActiveFunction();
+    @Override
+    public void run() {
+        active.loadComponent(); //Load Image
+        active.addComponent();
+        active.UI();
+        music.musicPlay();
+    }
 
-            @Override
-            public void run() {
-                active.loadImages(); //Load Image
-                active.addComponent();
-                active.UI();
-            }
 }
-=======
->>>>>>> 4b3beeea694279d912487b3614021d05e39fccfc
