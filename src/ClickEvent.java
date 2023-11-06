@@ -9,7 +9,7 @@ class StartClickEvent extends MouseAdapter {
         //Dumy constructor
     }
     public void mouseClicked(MouseEvent e) {
-        new Init();
+        new FrameInit();
         GameStart start = new GameStart();
     }
 
@@ -20,24 +20,9 @@ class RuleClickEvent extends MouseAdapter {
         //Dumy constructor
     }
     public void mouseClicked(MouseEvent e) {
-        new Init();
+        new FrameInit();
+        new DisplayRule();
     };
-}
-
-class Init { //Init JFrame class
-    public Init(){
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() { //Using Threads for Real-Time Processing
-                //JFrame Init
-                Main.setFrame.getContentPane().removeAll();
-                Main.setFrame.revalidate();
-                Main.setFrame.repaint();
-            }
-        });
-        thread.start();
-    }
-
 }
 
 

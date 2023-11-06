@@ -2,29 +2,50 @@ import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class StartFrame extends JFrame {
+public class StartFrame extends JFrame{
     protected ImageIcon bg;
     protected ImageIcon titleImage;
     protected ImageIcon start;
     protected ImageIcon rule;
 
     protected StartFrame(){}
+    public StartFrame(JFrame startFrame) {
+        frameSetting(startFrame);
 
-    public StartFrame(JFrame mainframe) {
-        super("Hogwarts Escape");
-        mainframe.getContentPane();
-        mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainframe.setLayout(null);
-
+<<<<<<< HEAD
         MainDisplay runable = new MainDisplay();
         Thread th = new Thread(runable);
         th.start();
         mainframe.setLocation(300,300);
 
+=======
+        ActiveFunction active = new ActiveFunction();
+        //Using Thread to Load Image Process.
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                active.loadImages(); //Load Image
+                active.addComponent();
+                showFrame(startFrame);
+            }
+        });
+        thread.start();
+>>>>>>> 4b3beeea694279d912487b3614021d05e39fccfc
     }
 
+    public void frameSetting(JFrame frame){
+        frame.setTitle("Hogwarts Escape");
+        frame.getContentPane();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(null);
+    }
+    public void showFrame(JFrame frame){
+        frame.setSize(1200, 750);
+        frame.setVisible(true);
+    }
 }
 
+<<<<<<< HEAD
 class ActiveFunction extends StartFrame{
     protected ActiveFunction(){}
 
@@ -78,3 +99,5 @@ class MainDisplay extends ActiveFunction implements Runnable{
                 active.UI();
             }
 }
+=======
+>>>>>>> 4b3beeea694279d912487b3614021d05e39fccfc
