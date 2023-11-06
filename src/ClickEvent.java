@@ -1,7 +1,10 @@
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.sound.sampled.Clip;
 
 class StartClickEvent extends MouseAdapter {
 
@@ -9,6 +12,7 @@ class StartClickEvent extends MouseAdapter {
         //Dumy constructor
     }
     public void mouseClicked(MouseEvent e) {
+        StartFrame.music.musicStop();
         new FrameInit();
         GameStart start = new GameStart();
     }
