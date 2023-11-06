@@ -1,5 +1,3 @@
 public class DisplayRule {
-
-    public DisplayRule(){
-    }
+    public DisplayRule(){}
 }
