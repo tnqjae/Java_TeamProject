@@ -16,18 +16,11 @@ public class StartFrame extends JFrame {
         mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainframe.setLayout(null);
 
-        ActiveFunction active = new ActiveFunction();
+        MainDisplay runable = new MainDisplay();
+        Thread th = new Thread(runable);
+        th.start();
+        mainframe.setLocation(300,300);
 
-        //Using Thread to Load Image Process.
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                active.loadImages(); //Load Image
-                active.addComponent();
-                active.UI();
-            }
-        });
-        thread.start();
     }
 
 }
@@ -73,4 +66,15 @@ class ActiveFunction extends StartFrame{
         Main.setFrame.setSize(1200, 750);
         Main.setFrame.setVisible(true);
     }
+}
+
+class MainDisplay extends ActiveFunction implements Runnable{
+        ActiveFunction active = new ActiveFunction();
+
+            @Override
+            public void run() {
+                active.loadImages(); //Load Image
+                active.addComponent();
+                active.UI();
+            }
 }
