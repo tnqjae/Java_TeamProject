@@ -5,6 +5,7 @@ public class GameStart extends ActiveFunction{
     ImageIcon character;
     public GameStart(){
         character = new ImageIcon("./img/test.png");
+
         ActiveFunction active = new ActiveFunction();
 
         Main.setFrame.add(active.createLabel(character, 200,200));
