@@ -5,10 +5,8 @@ public class GameStart extends ActiveFunction{
     //Contains the overall content of the game
     public ImageIcon character;
     public GameStart(){
-        ActiveFunction active = new ActiveFunction();
-
         character = new ImageIcon("./img/test.png");
-        boldmote = active.createLabel(character, 200,200);
+        boldmote = createLabel(character, 200,200);
 
         addActiveListener();
 

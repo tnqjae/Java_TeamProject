@@ -4,16 +4,15 @@ import java.awt.event.MouseEvent;
 
 public class StartFrame extends JFrame{
     public static MusicPlay music;
-    protected ImageIcon bg;
+    protected ImageIcon startBackground;
     protected ImageIcon titleImage;
     protected ImageIcon start;
     protected ImageIcon rule;
 
+
     protected StartFrame(){}
-    public StartFrame(JFrame mainframe) {
-        frameSetting(mainframe);
-        //프레임이 나타나는 위치 설정
-        mainframe.setLocation(300,300);
+    public StartFrame(JFrame frame) {
+        frameSetting(frame);
 
         MainDisplay runable = new MainDisplay();
         Thread th = new Thread(runable);
@@ -24,6 +23,8 @@ public class StartFrame extends JFrame{
         frame.setTitle("Hogwarts Escape");
         frame.getContentPane();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);//Make the frame appear in the center of the screen
+        frame.setResizable(false);//Fixed Frame
         frame.setLayout(null);
     }
     public void showFrame(JFrame frame){

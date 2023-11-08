@@ -4,7 +4,7 @@ import java.awt.event.MouseAdapter;
 class ActiveFunction extends StartFrame{
     protected ActiveFunction(){}
     protected void loadComponent() {
-        bg = new ImageIcon("./img/StartBackground.jpeg");
+        startBackground = new ImageIcon("./img/StartBackground.jpeg");
         titleImage = new ImageIcon("./img/title.png");
         start = new ImageIcon("./img/Start.png");
         rule = new ImageIcon("./img/Rule.png");
@@ -36,7 +36,7 @@ class ActiveFunction extends StartFrame{
         //Set Title
         Main.setFrame.add(createLabel(titleImage,350,80));
         //Set Background
-        Main.setFrame.add(createLabel(bg, 0,0));
+        Main.setFrame.add(createLabel(startBackground, 0,0));
     }
     protected void UI(){
         Main.setFrame.setSize(1200, 750);
