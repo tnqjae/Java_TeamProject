@@ -1,10 +1,11 @@
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.LineUnavailableException;
-import javax.swing.*;
-import java.awt.*;
+package AboutFunction;
+
+import MainFrame.StartFrame;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.sound.sampled.Clip;
+import MainFrame.DisplayRule;
+import MainFrame.GameStart;
 
 class StartClickEvent extends MouseAdapter {
 

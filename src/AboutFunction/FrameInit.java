@@ -1,3 +1,7 @@
+package AboutFunction;
+
+import MainFrame.Main;
+
 class FrameInit { //Init JFrame class
     public FrameInit(){
         Thread thread = new Thread(new Runnable() {

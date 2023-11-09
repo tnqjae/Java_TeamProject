@@ -1,6 +1,11 @@
+package MainFrame;
+
+import AboutFunction.ActiveFunction;
+import MainFrame.Main;
+
 import javax.swing.*;
 
-public class DisplayRule extends ActiveFunction{
+public class DisplayRule extends ActiveFunction {
     private ImageIcon ruleBackground;
     public DisplayRule(){
         ruleBackground = new ImageIcon("./img/ruleBackground.jpeg");

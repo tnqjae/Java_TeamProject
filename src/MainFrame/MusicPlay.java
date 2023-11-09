@@ -1,3 +1,5 @@
+package MainFrame;
+
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import java.io.File;
@@ -15,7 +17,7 @@ public class MusicPlay{
         }
     }
 
-    public void musicPlay() {
+    protected void musicPlay() {
         if (clip != null) {
             clip.start();
         }

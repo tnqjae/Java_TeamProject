@@ -1,11 +1,14 @@
+package AboutFunction;
+
 import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.KeyEvent;;
+import MainFrame.GameStart;
 
 //Define All key Event
 public class KeyboardEvent extends KeyAdapter {
     GameStart gs;
     public KeyboardEvent(GameStart gs) {
-        this.gs = gs; // GameStart 객체를 받아서 할당합니다.
+        this.gs = gs; // MainFrame.GameStart 객체를 받아서 할당합니다.
     }
     @Override
     public void keyPressed(KeyEvent e) {

@@ -1,9 +1,15 @@
+package MainFrame;
+
+import AboutFunction.ActiveFunction;
+import AboutFunction.KeyboardEvent;
+import MainFrame.Main;
+
 import javax.swing.*;
 
-public class GameStart extends ActiveFunction{
+public class GameStart extends ActiveFunction {
     public static JLabel  boldmote;
     //Contains the overall content of the game
-    public ImageIcon character;
+    private ImageIcon character;
     public GameStart(){
         character = new ImageIcon("./img/test.png");
         boldmote = createLabel(character, 200,200);
@@ -13,7 +19,7 @@ public class GameStart extends ActiveFunction{
         Main.setFrame.add(boldmote);
     }
     public void addActiveListener(){
-        KeyboardEvent keyboardEvent = new KeyboardEvent(this); // GameStart 인스턴스 전달
+        KeyboardEvent keyboardEvent = new KeyboardEvent(this); // MainFrame.GameStart 인스턴스 전달
 
         boldmote.addKeyListener(keyboardEvent);
         boldmote.setFocusable(true);

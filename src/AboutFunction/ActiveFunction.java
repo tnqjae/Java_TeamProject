@@ -1,7 +1,13 @@
+package AboutFunction;
+
+import MainFrame.Main;
+import MainFrame.MusicPlay;
+import MainFrame.StartFrame;
+
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 
-class ActiveFunction extends StartFrame{
+public class ActiveFunction extends StartFrame {
     protected ActiveFunction(){}
     protected void loadComponent() {
         startBackground = new ImageIcon("./img/StartBackground.jpeg");

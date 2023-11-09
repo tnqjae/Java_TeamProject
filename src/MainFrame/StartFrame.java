@@ -1,6 +1,7 @@
+package MainFrame;
+
+import AboutFunction.*;
 import javax.swing.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class StartFrame extends JFrame{
     public static MusicPlay music;
@@ -11,7 +12,7 @@ public class StartFrame extends JFrame{
 
 
     protected StartFrame(){}
-    public StartFrame(JFrame frame) {
+    protected StartFrame(JFrame frame) {
         frameSetting(frame);
 
         MainDisplay runable = new MainDisplay();
@@ -19,7 +20,7 @@ public class StartFrame extends JFrame{
         th.start();
     }
 
-    public void frameSetting(JFrame frame){
+    private void frameSetting(JFrame frame){
         frame.setTitle("Hogwarts Escape");
         frame.getContentPane();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -27,20 +28,19 @@ public class StartFrame extends JFrame{
         frame.setResizable(false);//Fixed Frame
         frame.setLayout(null);
     }
-    public void showFrame(JFrame frame){
+    private void showFrame(JFrame frame){
         frame.setSize(1200, 750);
         frame.setVisible(true);
     }
 }
 
 class MainDisplay extends ActiveFunction implements Runnable {
-    ActiveFunction active = new ActiveFunction();
     @Override
     public void run() {
-        active.loadComponent(); //Load Image
-        active.addComponent();
-        active.UI();
-        music.musicPlay();
+        loadComponent(); //Load Image
+        addComponent();
+        UI();
+        StartFrame.music.musicPlay();
     }
 
 }
