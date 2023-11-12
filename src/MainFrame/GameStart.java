@@ -19,7 +19,7 @@ public class GameStart extends ActiveFunction {
         Main.setFrame.add(boldmote);
     }
     public void addActiveListener(){
-        KeyboardEvent keyboardEvent = new KeyboardEvent(this); // MainFrame.GameStart 인스턴스 전달
+        KeyboardEvent keyboardEvent = new KeyboardEvent(); // MainFrame.GameStart 인스턴스 전달
 
         boldmote.addKeyListener(keyboardEvent);
         boldmote.setFocusable(true);

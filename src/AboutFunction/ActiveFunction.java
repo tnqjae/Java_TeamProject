@@ -12,8 +12,8 @@ public class ActiveFunction extends StartFrame {
     protected void loadComponent() {
         startBackground = new ImageIcon("./img/StartBackground.jpeg");
         titleImage = new ImageIcon("./img/title.png");
-        start = new ImageIcon("./img/Start.png");
-        rule = new ImageIcon("./img/Rule.png");
+        startButton = new ImageIcon("./img/Start.png");
+        ruleButton = new ImageIcon("./img/Rule.png");
         //Load music
         music = new MusicPlay("./music/herrypotter.wav");
     }
@@ -31,11 +31,11 @@ public class ActiveFunction extends StartFrame {
     //Create and add component
     protected void addComponent(){
         //Set Start Button
-        JLabel startLabel = createLabel(start, 60, 380);
+        JLabel startLabel = createLabel(startButton, 60, 380);
         addEventListener(startLabel, new StartClickEvent());
         Main.setFrame.add(startLabel);
         //Set Rule Button
-        JLabel ruleLabel = createLabel(rule, 60,500);
+        JLabel ruleLabel = createLabel(ruleButton, 60,500);
         addEventListener(ruleLabel,new RuleClickEvent());
         Main.setFrame.add(ruleLabel);
 

@@ -2,14 +2,16 @@ package MainFrame;
 
 import AboutFunction.*;
 import javax.swing.*;
+import java.awt.Toolkit;
+import java.awt.Dimension;
 
 public class StartFrame extends JFrame{
+    private Dimension res;
     public static MusicPlay music;
     protected ImageIcon startBackground;
     protected ImageIcon titleImage;
-    protected ImageIcon start;
-    protected ImageIcon rule;
-
+    protected ImageIcon startButton;
+    protected ImageIcon ruleButton;
 
     protected StartFrame(){}
     protected StartFrame(JFrame frame) {
@@ -24,7 +26,9 @@ public class StartFrame extends JFrame{
         frame.setTitle("Hogwarts Escape");
         frame.getContentPane();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);//Make the frame appear in the center of the screen
+
+        res = Toolkit.getDefaultToolkit().getScreenSize();
+        frame.setLocation(res.height / 4, res.width / 8);//Make the frame appear in the center of the screen
         frame.setResizable(false);//Fixed Frame
         frame.setLayout(null);
     }
@@ -34,6 +38,7 @@ public class StartFrame extends JFrame{
     }
 }
 
+//Use Thread to display component.
 class MainDisplay extends ActiveFunction implements Runnable {
     @Override
     public void run() {
