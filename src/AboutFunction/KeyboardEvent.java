@@ -19,6 +19,18 @@ public class KeyboardEvent extends KeyAdapter {
         } else if (keyCode == KeyEvent.VK_RIGHT) {
             GameStart.boldmote.setLocation(GameStart.boldmote.getX() + 10, GameStart.boldmote.getY());
         }
+        else if(keyCode == KeyEvent.VK_RIGHT && keyCode == KeyEvent.VK_UP){
+            GameStart.boldmote.setLocation(GameStart.boldmote.getX() + 10, GameStart.boldmote.getY() - 10);
+        }
+        else if(keyCode == KeyEvent.VK_LEFT && keyCode == KeyEvent.VK_UP){
+            GameStart.boldmote.setLocation(GameStart.boldmote.getX() - 10, GameStart.boldmote.getY() - 10);
+        }
+        else if(keyCode == KeyEvent.VK_RIGHT && keyCode == KeyEvent.VK_DOWN){
+            GameStart.boldmote.setLocation(GameStart.boldmote.getX() + 10, GameStart.boldmote.getY() + 10);
+        }
+        else if(keyCode == KeyEvent.VK_LEFT && keyCode == KeyEvent.VK_DOWN){
+            GameStart.boldmote.setLocation(GameStart.boldmote.getX() - 10, GameStart.boldmote.getY() - 10);
+        }
     }
 }
 

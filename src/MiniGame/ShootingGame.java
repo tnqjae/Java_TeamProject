@@ -11,8 +11,8 @@ public class ShootingGame extends JFrame {
     public int point = 0;
     public int form = 1;
     JLabel score = new JLabel();
-    ImageIcon asd = new ImageIcon("img/asd.png");
-    ImageIcon bomb = new ImageIcon("img/bomb.png");
+    ImageIcon asd = new ImageIcon("img/miniGameImg/asd.png");
+    ImageIcon bomb = new ImageIcon("img/miniGameImg/bomb.png");
     JLabel Target = new JLabel(asd);
     private int n=60;
     class TimerThread implements Runnable {
@@ -26,7 +26,7 @@ public class ShootingGame extends JFrame {
         public void run() {
             while(n>=0) { // 무한 루프
                 timerLabel.setText(Integer.toString(n)); // 레이블에 카운트 값 출력
-                n--; // 카운트 증가
+                n--;
                 try {
                     Thread.sleep(1000); // 1초동안 잠을 잔다.
                 }
@@ -56,7 +56,6 @@ public class ShootingGame extends JFrame {
                 catch(InterruptedException e){
                     return; // 리턴하면 스레드 종료
                 }
-
                 if(Target.getIcon()==asd & form==0) {
                     if(point==0);
                     else point--;
@@ -64,7 +63,10 @@ public class ShootingGame extends JFrame {
                 score.setText("Score : "+point);
                 form=0;
                 if(n==-1) {
-
+                    if(point >= 30)
+                        success = true;
+                    else
+                        success = false;
                     return;
                 }
             }
@@ -125,6 +127,10 @@ public class ShootingGame extends JFrame {
             else Target.setIcon(asd);
             form=2;
         }
+    }
+
+    public boolean getSuccess(){
+        return success;
     }
     public static void main(String[] args) {
         new ShootingGame();

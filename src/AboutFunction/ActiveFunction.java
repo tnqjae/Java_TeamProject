@@ -10,10 +10,10 @@ import java.awt.event.MouseAdapter;
 public class ActiveFunction extends StartFrame {
     protected ActiveFunction(){}
     protected void loadComponent() {
-        startBackground = new ImageIcon("./img/StartBackground.jpeg");
-        titleImage = new ImageIcon("./img/title.png");
-        startButton = new ImageIcon("./img/Start.png");
-        ruleButton = new ImageIcon("./img/Rule.png");
+        startBackground = new ImageIcon("./img/mainFrameImg/StartBackground.jpeg");
+        titleImage = new ImageIcon("./img/mainFrameImg/title.png");
+        startButton = new ImageIcon("./img/mainFrameImg/Start.png");
+        ruleButton = new ImageIcon("./img/mainFrameImg/Rule.png");
         //Load music
         music = new MusicPlay("./music/herrypotter.wav");
     }
