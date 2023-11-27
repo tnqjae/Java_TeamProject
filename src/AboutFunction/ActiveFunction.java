@@ -18,7 +18,7 @@ public class ActiveFunction extends StartFrame {
         music = new MusicPlay("./music/herrypotter.wav");
     }
     //Create Label
-    protected JLabel createLabel(ImageIcon icon, int x, int y){
+    protected JLabel createLabel(ImageIcon icon, int x, int y) {
         JLabel la = new JLabel(icon);
         la.setLocation(x,y);
         la.setSize(icon.getIconWidth(),icon.getIconHeight());
@@ -47,5 +47,12 @@ public class ActiveFunction extends StartFrame {
     protected void UI(){
         Main.setFrame.setSize(1200, 750);
         Main.setFrame.setVisible(true);
+    }
+
+    public JLabel test(JLabel label, String path){
+        ImageIcon icon = new ImageIcon(path);
+        label.setIcon(icon);
+
+        return label;
     }
 }

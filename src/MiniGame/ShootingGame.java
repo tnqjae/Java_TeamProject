@@ -14,6 +14,7 @@ public class ShootingGame extends JFrame {
     ImageIcon asd = new ImageIcon("img/miniGameImg/asd.png");
     ImageIcon bomb = new ImageIcon("img/miniGameImg/bomb.png");
     JLabel Target = new JLabel(asd);
+
     private int n=60;
     class TimerThread implements Runnable {
         private JLabel timerLabel;// 타이머 값이 출력되는 레이블
@@ -37,6 +38,7 @@ public class ShootingGame extends JFrame {
             }
         }
     }
+
     class Tg implements Runnable{
         private JLabel tg;
         public Tg(JLabel tg){
@@ -106,8 +108,9 @@ public class ShootingGame extends JFrame {
         setVisible(true);
         th2.start();
         th.start();
-
-
+    }
+    public boolean getSuccess(){
+        return success;
     }
     class ClickEvent extends MouseAdapter{
         public void mousePressed  (MouseEvent e){
@@ -129,9 +132,6 @@ public class ShootingGame extends JFrame {
         }
     }
 
-    public boolean getSuccess(){
-        return success;
-    }
     public static void main(String[] args) {
         new ShootingGame();
     }

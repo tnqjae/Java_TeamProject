@@ -11,7 +11,7 @@ public class GameStart extends ActiveFunction {
     //Contains the overall content of the game
     private ImageIcon character;
     public GameStart(){
-        character = new ImageIcon("./img/character/herry_stand.png");
+        character = new ImageIcon("./img/character/herry_front.png");
         boldmote = createLabel(character, 200,200);
 
         addActiveListener();
