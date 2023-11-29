@@ -49,7 +49,7 @@ public class ActiveFunction extends StartFrame {
         Main.setFrame.setVisible(true);
     }
 
-    public JLabel test(JLabel label, String path){
+    public JLabel changeImg(JLabel label, String path){
         ImageIcon icon = new ImageIcon(path);
         label.setIcon(icon);
 

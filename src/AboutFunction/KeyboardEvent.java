@@ -16,17 +16,21 @@ public class KeyboardEvent extends KeyAdapter {
 
         if (keyCode == KeyEvent.VK_UP) {
             GameStart.boldmote.setLocation(GameStart.boldmote.getX(), GameStart.boldmote.getY() - 10);
-            active.test(GameStart.boldmote, "./img/character/herry_back.png");
-        } else if (keyCode == KeyEvent.VK_DOWN) {
+            active.changeImg(GameStart.boldmote, "./img/character/herry_back.png");
+        }
+        else if (keyCode == KeyEvent.VK_DOWN) {
             GameStart.boldmote.setLocation(GameStart.boldmote.getX(), GameStart.boldmote.getY() + 10);
-            active.test(GameStart.boldmote, "./img/character/herry_front.png");
-        } else if (keyCode == KeyEvent.VK_LEFT) {
-            active.test(GameStart.boldmote, "./img/character/herry_left.png");
+            active.changeImg(GameStart.boldmote, "./img/character/herry_front.png");
+        }
+        else if (keyCode == KeyEvent.VK_LEFT) {
             GameStart.boldmote.setLocation(GameStart.boldmote.getX() - 10, GameStart.boldmote.getY());
-        } else if (keyCode == KeyEvent.VK_RIGHT) {
-            active.test(GameStart.boldmote, "./img/character/herry_right.png");
+            active.changeImg(GameStart.boldmote, "./img/character/herry_left.png");
+        }
+        else if (keyCode == KeyEvent.VK_RIGHT) {
             GameStart.boldmote.setLocation(GameStart.boldmote.getX() + 10, GameStart.boldmote.getY());
+            active.changeImg(GameStart.boldmote, "./img/character/herry_right.png");
         }
     }
+
 }
 
