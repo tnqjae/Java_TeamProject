@@ -27,7 +27,7 @@ public class Question1 extends JFrame {
         questionLabel = new JLabel(" 다음 그림을 보고 노트북의 비밀번호를 입력하시오.");
 
         // 이미지를 표시할 레이블 초기화
-        ImageIcon imageIcon = new ImageIcon("/Users/kimtaehee/Desktop/김태희/2-2/객체지향/Q1.png");
+        ImageIcon imageIcon = new ImageIcon("./img/miniGameImg/Q1.png");
         Image image = imageIcon.getImage().getScaledInstance(500, 120, Image.SCALE_SMOOTH);
         imageIcon = new ImageIcon(image);
         imageLabel = new JLabel(imageIcon);

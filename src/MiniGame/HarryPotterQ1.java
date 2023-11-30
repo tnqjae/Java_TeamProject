@@ -25,7 +25,7 @@ public class HarryPotterQ1 extends JFrame {
     	questionLabel = new JLabel("다음 그림이 상징하는 3가지 성물에 대해 작성하시오.");
     	
         // 이미지를 표시할 레이블 초기화
-        imageLabel = new JLabel(new ImageIcon("/Users/kimtaehee/Desktop/김태희/2-2/객체지향/harrypotter.png"));
+        imageLabel = new JLabel(new ImageIcon("./img/miniGameImg/harrypotter.png"));
 
         // 답을 입력할 텍스트 필드 초기화
         answerField = new JTextField();

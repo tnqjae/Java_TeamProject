@@ -24,7 +24,7 @@ public class Question2 extends JFrame {
     private void setupUI() {
         questionLabel = new JLabel(" 다음 그림을 보고 ?에 들어갈 숫자가 순서대로 들어간 번호를 골라라.");
 
-        ImageIcon imageIcon = new ImageIcon("/Users/kimtaehee/Desktop/김태희/2-2/객체지향/Q2.png");
+        ImageIcon imageIcon = new ImageIcon("./img/miniGameImg/Q2.png");
         Image image = imageIcon.getImage().getScaledInstance(500, 250, Image.SCALE_SMOOTH); 
         imageIcon = new ImageIcon(image);
 
