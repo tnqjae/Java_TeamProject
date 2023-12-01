@@ -11,6 +11,8 @@ public class HarryPotterQ2 extends JFrame {
     private JTextField spell3Field;
     private JButton checkButton;
 
+    private boolean success = false;
+
     public HarryPotterQ2() {
         setTitle("해리포터 마법 문제");
         setSize(500, 500);
@@ -87,11 +89,18 @@ public class HarryPotterQ2 extends JFrame {
                 spell2.equalsIgnoreCase("크루시오") &&
                 spell3.equalsIgnoreCase("임페리오")) {
             JOptionPane.showMessageDialog(this, "Correct!");
+            success = true;
+            dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Wrong, Try Again.");
+            dispose();
         }
     }
 
+
+    public boolean getSuccess(){
+        return success;
+    }
     public static void main(String[] args) {
         new HarryPotterQ2();
     }

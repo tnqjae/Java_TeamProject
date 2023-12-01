@@ -33,7 +33,7 @@ public class KeyboardEvent extends KeyAdapter {
         int keyCode = e.getKeyCode();
 
         // 왼쪽 또는 오른쪽 키가 눌렸을 때 타이머 시작
-        if (keyCode == KeyEvent.VK_LEFT || keyCode == KeyEvent.VK_RIGHT) {
+        if (keyCode == KeyEvent.VK_LEFT || keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_DOWN) {
             timer.start();
         }
 
@@ -43,10 +43,23 @@ public class KeyboardEvent extends KeyAdapter {
 
     @Override
     public void keyReleased(KeyEvent e) {
+        int keyCode = e.getKeyCode();
         // 키가 떼졌을 때 타이머 중지
         timer.stop();
         // 이미지 인덱스 초기화
         imageIndex = 0;
+
+        if (keyCode == KeyEvent.VK_LEFT) {
+            active.changeImg(GameStart.boldmote, "./img/character/herry_left.png");
+        } else if (keyCode == KeyEvent.VK_RIGHT) {
+            active.changeImg(GameStart.boldmote, "./img/character/herry_right.png");
+        } else if(keyCode == KeyEvent.VK_UP){
+            active.changeImg(GameStart.boldmote, "./img/character/herry_back.png");
+        } else if(keyCode == KeyEvent.VK_DOWN){
+            active.changeImg(GameStart.boldmote, "./img/character/herry_front.png");
+        }
+
+
     }
 
     private void handleKeyPress(int keyCode) {
@@ -62,7 +75,13 @@ public class KeyboardEvent extends KeyAdapter {
             x -= 10;
         } else if (keyCode == KeyEvent.VK_RIGHT) {
             x += 10;
+        } else if(keyCode == KeyEvent.VK_UP){
+            y -= 10;
+        } else if(keyCode == KeyEvent.VK_DOWN){
+            y += 10;
         }
+
+
 
         // Modify the position if it goes out of the JFrame area.
         if (isWithinBounds(x, y, GameStart.boldmote.getWidth(), GameStart.boldmote.getHeight())) {
@@ -100,9 +119,7 @@ public class KeyboardEvent extends KeyAdapter {
             };
         } else if (keyCode == KeyEvent.VK_UP) {
             images = new String[] {
-                    "./img/character/herry_right.png",
-                    "./img/character/herry_right_walkLeftleg.png",
-                    "./img/character/herry_right_walkRightleg.png"
+                    "./img/character/herry_back.png",
             };
         }else if (keyCode == KeyEvent.VK_DOWN) {
             images = new String[] {
@@ -124,4 +141,5 @@ public class KeyboardEvent extends KeyAdapter {
     private boolean isWithinBounds(int x, int y, int width, int height) {
         return x >= 0 && y >= 0 && x + width <= 1200 && y + height <= 750;
     }
+
 }

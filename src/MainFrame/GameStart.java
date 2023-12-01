@@ -10,13 +10,20 @@ public class GameStart extends ActiveFunction {
     public static JLabel  boldmote;
     //Contains the overall content of the game
     private ImageIcon character;
+    private ImageIcon hoc;
+
     public GameStart(){
         character = new ImageIcon("./img/character/herry_front.png");
         boldmote = createLabel(character, 200,200);
 
+        hoc = new ImageIcon("img/hoc.png");
+
+
+        JLabel hoclabel = createLabel(hoc, 400,400);
         addActiveListener();
 
         Main.setFrame.add(boldmote);
+        Main.setFrame.add(hoclabel);
     }
     public void addActiveListener(){
         KeyboardEvent keyboardEvent = new KeyboardEvent(); // MainFrame.GameStart 인스턴스 전달
