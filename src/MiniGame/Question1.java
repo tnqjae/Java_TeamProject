@@ -12,6 +12,7 @@ public class Question1 extends JFrame {
     private JLabel questionLabel;
     private JFrame hintFrame; // 힌트를 표시할 프레임
 
+    private boolean success = false;
     public Question1() {
         setTitle("Question 1");
         setSize(500, 500);
@@ -98,6 +99,7 @@ public class Question1 extends JFrame {
         // 정답 여부에 따라 메시지 표시
         if (userPassword.equals("5269")) {
             JOptionPane.showMessageDialog(this, "Correct!");
+            dispose();
         } else {
             int option = JOptionPane.showConfirmDialog(this, "Wrong, Try Again", "Incorrect", JOptionPane.YES_NO_OPTION);
             if (option == JOptionPane.YES_OPTION) {

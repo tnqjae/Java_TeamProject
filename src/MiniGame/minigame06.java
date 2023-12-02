@@ -3,11 +3,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class minigame05_2 { ///넌센스 퀴즈
+public class minigame06 { ///넌센스 퀴즈
     private Map<String, String> questions;
     private int score;
 
-    public minigame05_2() {
+    public minigame06() {
         questions = new HashMap<>();
         // 무작위 넌센스 질문과 정답을 추가합니다.
         questions.put("질문 : 한 가지 일에 지나치게 몰두하던 사람이 갑자기 극도의 신체적,정신 피로로 무기력증과 자기현상의 빠지는 이 현상은?", "정답 : 번아웃증후군");  ///질문과 정답 추가해야함.

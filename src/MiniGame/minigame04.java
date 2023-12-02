@@ -1,4 +1,4 @@
-package minigamefile;
+package MiniGame;
 import java.util.Scanner;
 public class minigame04 { ///한붓그리기 (그릴 수가 없어요...뭔가 웹프 처럼 그릴 수 있는 창을 열어야 할거 같은데 거기까지는 모르겠어요..
     private char[][] board;

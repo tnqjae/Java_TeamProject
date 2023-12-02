@@ -2,12 +2,12 @@ package MiniGame;
 import java.util.Random;
 import java.util.Scanner;
 
-public class minigame06 { /// 벽돌쌓기 게임 방해요소가 있긴하나 금방해결됨 난이도가 없음.
+public class minigame07 { /// 벽돌쌓기 게임 방해요소가 있긴하나 금방해결됨 난이도가 없음.
     private static final int MAX_HEIGHT = 10;
     private int currentHeight;
     private boolean obstacleEncountered;
 
-    public minigame06() {
+    public minigame07() {
         currentHeight = 0;
         obstacleEncountered = false;
     }
@@ -52,7 +52,7 @@ public class minigame06 { /// 벽돌쌓기 게임 방해요소가 있긴하나 �
     }
 
     public static void main(String[] args) {
-        minigame06 game = new minigame06();
+        minigame07 game = new minigame07();
         game.playGame();
     }
 }

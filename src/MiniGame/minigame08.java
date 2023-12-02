@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class minigame07 extends JFrame implements ActionListener, KeyListener {
+public class minigame08 extends JFrame implements ActionListener, KeyListener {
     private static final int GRID_SIZE = 20;
     private static final int CELL_SIZE = 20;
 
@@ -16,7 +16,7 @@ public class minigame07 extends JFrame implements ActionListener, KeyListener {
     private Point food;
     private int direction;
 
-    public minigame07() {
+    public minigame08() {
         setTitle("Snake Game");
         setSize(GRID_SIZE * CELL_SIZE, GRID_SIZE * CELL_SIZE);
         setResizable(false);
@@ -135,7 +135,7 @@ public class minigame07 extends JFrame implements ActionListener, KeyListener {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            minigame07 game = new minigame07();
+            minigame08 game = new minigame08();
             game.setVisible(true);
         });
     }

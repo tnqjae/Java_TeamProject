@@ -1,4 +1,4 @@
-package minigamefile;
+package MiniGame;
 
 import java.util.Scanner;
 public class minigame01 { ////숫자놀이

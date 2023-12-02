@@ -1,12 +1,11 @@
-package minigamefile;
+package MiniGame;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
 import java.util.*;
-class minigame07_2 extends JFrame{  ///지렁이 게임인데 사진이없어서 그런지 안되네요....
+class minigame extends JFrame{  ///지렁이 게임인데 사진이없어서 그런지 안되네요....
     GamePanel p;
-    minigame07_2(){
+    minigame(){
         this.setTitle("스네이크 움직이기");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         p=new GamePanel();
@@ -130,8 +129,8 @@ class minigame07_2 extends JFrame{  ///지렁이 게임인데 사진이없어서
         }
     }
 }
-public class JavaApplication35 {
+public class minigame09{
     public static void main(String[] args) {
-        new minigame07_2();
+        new minigame();
     }
 }

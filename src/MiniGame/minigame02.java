@@ -1,4 +1,4 @@
-package minigamefile;
+package MiniGame;
 import java.util.Scanner;
 import java.util.Random;
     public class minigame02 {  ////행맨게임

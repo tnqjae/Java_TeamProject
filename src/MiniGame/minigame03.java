@@ -1,4 +1,4 @@
-package minigamefile;
+package MiniGame;
 import java.util.Scanner;
 public class minigame03 { ////타임어택
     public static void main(String[] args) {
