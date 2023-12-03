@@ -12,13 +12,15 @@ import java.awt.event.KeyEvent;
 import java.awt.font.GlyphMetrics;
 import javax.swing.*;
 
+
 public class KeyboardEvent extends KeyAdapter {
     MapConflict mc = new MapConflict();
     private ActiveFunction active = new ActiveFunction();
     private Timer timer;
     private int imageIndex; // 이미지 인덱스
     SelectMiniGame selectedGame = new SelectMiniGame();
-
+    private int currentLocX = 0;
+    private int currentLocY = 0;
     public KeyboardEvent() {
         // 타이머 설정
         timer = new Timer(1000, new ActionListener() { // 이미지를 0.2초 간격으로 변경
@@ -74,9 +76,6 @@ public class KeyboardEvent extends KeyAdapter {
         int oldX = x;
         int oldY = y;
 
-        int currentLocX = 2;
-        int currentLocY = 0;
-
         // Adjust the position based on the left or right arrow key.
         if (keyCode == KeyEvent.VK_LEFT) {
             x -= 10;
@@ -88,46 +87,69 @@ public class KeyboardEvent extends KeyAdapter {
             y += 10;
         }
 
-        MapSelection.setCurrentLocation(currentLocX,currentLocY);
         // Modify the position if it goes out of the JFrame area.
         if (mc.isWithinBounds(x, y, GameStart.boldmote.getWidth(), GameStart.boldmote.getHeight())) {
             GameStart.boldmote.setLocation(x, y);
 
-            if (mc.coversCoordinates(x, y, 600, 90) && !MapSelection.getWayState(0)){
-                JOptionPane.showMessageDialog(null, "문제를 푸시겠습니까?");
-                selectedGame.selectRandomMiniGame();
-                MapSelection.changeState(currentLocX, currentLocY,0, SelectMiniGame.success);
-            }
-            else if(mc.coversCoordinates(x,y,1110, 370) && !MapSelection.getWayState(1)) {
-                JOptionPane.showMessageDialog(null, "문제를 푸시겠습니까?");
-                selectedGame.selectRandomMiniGame();
-                MapSelection.changeState(currentLocX, currentLocY,1, SelectMiniGame.success);
-            }
-            else if(mc.coversCoordinates(x,y,600, 600) && !MapSelection.getWayState(2)) {
-                JOptionPane.showMessageDialog(null, "문제를 푸시겠습니까?");
-                selectedGame.selectRandomMiniGame();
-                MapSelection.changeState(currentLocX, currentLocY,2, SelectMiniGame.success);
-            }
-            else if(mc.coversCoordinates(x,y,160, 370) && !MapSelection.getWayState(3)) {
-                JOptionPane.showMessageDialog(null, "문제를 푸시겠습니까?");
-                selectedGame.selectRandomMiniGame();
-                MapSelection.changeState(currentLocX, currentLocY,3, SelectMiniGame.success);
+            MapSelection.setCurrentLocation(currentLocX,currentLocY);
+            if (mc.coversCoordinates(x, y, 600, 90) && !MapSelection.getWayState(0)) {
+                int option = JOptionPane.showConfirmDialog(null, "문제를 푸시겠습니까?", "문제 풀기", JOptionPane.YES_NO_OPTION);
+                if (option == JOptionPane.YES_OPTION) {
+                    selectedGame.selectRandomMiniGame();
+                }
+                SelectMiniGame.setLocate(0);
+            } else if (mc.coversCoordinates(x, y, 1110, 370) && !MapSelection.getWayState(1)) {
+                int option = JOptionPane.showConfirmDialog(null, "문제를 푸시겠습니까?", "문제 풀기", JOptionPane.YES_NO_OPTION);
+                if (option == JOptionPane.YES_OPTION) {
+                    selectedGame.selectRandomMiniGame();
+                }
+                SelectMiniGame.setLocate(1);
+                if(currentLocX == 2 && currentLocY == 2){
+                }
+            } else if (mc.coversCoordinates(x, y, 600, 600) && !MapSelection.getWayState(2)) {
+                int option = JOptionPane.showConfirmDialog(null, "문제를 푸시겠습니까?", "문제 풀기", JOptionPane.YES_NO_OPTION);
+                if (option == JOptionPane.YES_OPTION) {
+                    selectedGame.selectRandomMiniGame();
+                }
+                SelectMiniGame.setLocate(2);
+            } else if (mc.coversCoordinates(x, y, 160, 370) && !MapSelection.getWayState(3)) {
+                int option = JOptionPane.showConfirmDialog(null, "문제를 푸시겠습니까?", "문제 풀기", JOptionPane.YES_NO_OPTION);
+                if (option == JOptionPane.YES_OPTION) {
+                    selectedGame.selectRandomMiniGame();
+                }
+                SelectMiniGame.setLocate(3);
             }
 
             if (mc.coversCoordinates(x, y, 600, 10) && MapSelection.canMove(currentLocX,currentLocY, 0)){
-                JOptionPane.showMessageDialog(null, "다음 맵으로 이동?");
-            } else if(mc.coversCoordinates(x,y,1170, 370) && MapSelection.canMove(currentLocX,currentLocY, 1)) {
-                JOptionPane.showMessageDialog(null, "다음 맵으로 이동?");
+                JOptionPane.showMessageDialog(null, "다음 맵으로 이동");
+                moveCordinate(0);
+                MapSelection.loading(540,430);
+            }
+            else if(mc.coversCoordinates(x,y,1170, 370) && MapSelection.canMove(currentLocX,currentLocY, 1)) {
+                JOptionPane.showMessageDialog(null, "다음 맵으로 이동");
+                moveCordinate(1);
                 MapSelection.loading(210,370);
-            } else if(mc.coversCoordinates(x,y,600, 700) && MapSelection.canMove(currentLocX,currentLocY, 2)) {
-                JOptionPane.showMessageDialog(null, "문제를 푸시겠습니까?");
-            } else if(mc.coversCoordinates(x,y,40, 370) && MapSelection.canMove(currentLocX,currentLocY, 3)) {
-                JOptionPane.showMessageDialog(null, "문제를 푸시겠습니까?");
+            }
+            else if(mc.coversCoordinates(x,y,600, 700) && MapSelection.canMove(currentLocX,currentLocY, 2)) {
+                JOptionPane.showMessageDialog(null, "다음 맵으로 이동");
+                moveCordinate(2);
+                MapSelection.loading(550,230);
+            }
+            else if(mc.coversCoordinates(x,y,40, 370) && MapSelection.canMove(currentLocX,currentLocY, 3)) {
+                JOptionPane.showMessageDialog(null, "다음 맵으로 이동");
+                moveCordinate(3);
+                MapSelection.loading(900,260);
             }
 
             if (GameStart.hoclabel != null && mc.isCollidingWithObstacle(x, y, GameStart.hoclabel.getBounds())) {
                 GameStart.removeHoclabel();
                 GameStart.sumHoc += 1;
+                System.out.println(GameStart.sumHoc);
+            }
+            if (GameStart.negini != null && mc.isCollidingWithObstacle(x, y, GameStart.negini.getBounds())) {
+                GameStart.removeHoclabel();
+                GameStart.sumHoc += 1;
+                GameStart.setNeginiState(true);
                 System.out.println(GameStart.sumHoc);
             }
             // 이미지 변경 메서드 호출
@@ -167,5 +189,17 @@ public class KeyboardEvent extends KeyAdapter {
         active.changeImg(GameStart.boldmote, images[imageIndex]);
         // 이미지 인덱스 갱신
         imageIndex = (imageIndex + 1) % images.length;
+    }
+
+    private void moveCordinate(int loc){
+        if(loc == 0){
+            currentLocX -= 1;
+        } else if(loc == 1){
+            currentLocY += 1;
+        } else if(loc == 2){
+            currentLocX += 1;
+        } else if(loc == 3){
+            currentLocY -= 1;
+        }
     }
 }

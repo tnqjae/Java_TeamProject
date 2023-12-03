@@ -9,7 +9,7 @@ import java.awt.event.MouseAdapter;
 
 public class ActiveFunction extends StartFrame {
     protected ActiveFunction(){}
-    protected void loadComponent() {
+    public static void loadComponent() {
         startBackground = new ImageIcon("./img/mainFrameImg/StartBackground.jpeg");
         titleImage = new ImageIcon("./img/mainFrameImg/title.png");
         startButton = new ImageIcon("./img/mainFrameImg/Start.png");
@@ -18,18 +18,18 @@ public class ActiveFunction extends StartFrame {
         music = new MusicPlay("./music/herrypotter.wav");
     }
     //Create Label
-    protected static JLabel createLabel(ImageIcon icon, int x, int y) {
+    public static JLabel createLabel(ImageIcon icon, int x, int y) {
         JLabel la = new JLabel(icon);
         la.setLocation(x,y);
         la.setSize(icon.getIconWidth(),icon.getIconHeight());
         return la;
     }
     //add Listener
-    protected void addEventListener(JLabel la, MouseAdapter listener){
+    public static void addEventListener(JLabel la, MouseAdapter listener){
         la.addMouseListener(listener);
     }
     //Create and add component
-    protected void addComponent(){
+    public static void addComponent(){
         //Set Start Button
         JLabel startLabel = createLabel(startButton, 60, 380);
         addEventListener(startLabel, new StartClickEvent());
@@ -44,7 +44,7 @@ public class ActiveFunction extends StartFrame {
         //Set Background
         Main.setFrame.add(createLabel(startBackground, 0,0));
     }
-    protected void UI(){
+    public void UI(){
         Main.setFrame.setSize(1200, 750);
         Main.setFrame.setVisible(true);
     }

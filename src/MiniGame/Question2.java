@@ -81,8 +81,12 @@ public class Question2 extends JFrame {
     private void checkAnswer() {
         if (option1.isSelected()) {
             JOptionPane.showMessageDialog(this, "Correct!");
+            SelectMiniGame.setSuccess(true);
+            dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Wrong, Try Again.");
+            SelectMiniGame.setSuccess(false);
+            dispose();
         }
     }
 

@@ -18,7 +18,7 @@ public class minigame01 extends JFrame {
         setLocationRelativeTo(null);
 
         number = (int) (Math.random() * 100);
-        remainingAttempts = 5; // 초기 시도 횟수 설정
+        remainingAttempts = 6; // 초기 시도 횟수 설정
 
         setupUI();
 
@@ -72,7 +72,8 @@ public class minigame01 extends JFrame {
                     resultArea.append("정답!\n");
                     guessField.setEnabled(false); // 정답을 맞추면 입력 필드 비활성화
                     JOptionPane.showMessageDialog(this, "축하합니다! 정답을 맞추셨습니다.");
-                    SelectMiniGame.success = true;
+                    SelectMiniGame.setSuccess(true);
+                    dispose();
                 }
 
                 remainingAttempts--; // 시도 횟수 감소
@@ -86,9 +87,9 @@ public class minigame01 extends JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "남은 시도 횟수가 없습니다. 게임이 종료되었습니다." +
                     "\n창을 닫습니다.");
-            dispose();
             guessField.setEnabled(false);
-            SelectMiniGame.success = false;
+            SelectMiniGame.setSuccess(false);
+            dispose();
         }
     }
 

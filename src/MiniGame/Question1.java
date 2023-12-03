@@ -99,23 +99,21 @@ public class Question1 extends JFrame {
         // 정답 여부에 따라 메시지 표시
         if (userPassword.equals("5269")) {
             JOptionPane.showMessageDialog(this, "Correct!");
+            SelectMiniGame.setSuccess(true);
             dispose();
-            success = true;
         } else {
             int option = JOptionPane.showConfirmDialog(this, "Wrong, Try Again", "Incorrect", JOptionPane.YES_NO_OPTION);
             if (option == JOptionPane.YES_OPTION) {
                 // 사용자가 다시 시도하려면 텍스트 필드를 초기화
                 passwordField.setText("");
             }
-            success = false;
+            SelectMiniGame.setSuccess(true);
+            dispose();
         }
     }
     // 힌트 표시 메서드
     private void showHint() {
         hintFrame.setVisible(true);
-    }
-    public boolean getSuccess(){
-        return false;
     }
 
 }

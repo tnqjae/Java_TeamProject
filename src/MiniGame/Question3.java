@@ -109,8 +109,12 @@ public class Question3 extends JFrame {
         // 정답 여부에 따라 메시지 표시
         if (userAnswer != -1 && correctAnswers[userAnswer] == 10) {
             JOptionPane.showMessageDialog(this, "Correct!");
+            SelectMiniGame.setSuccess(true);
+            dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Wrong, Try Again.");
+            SelectMiniGame.setSuccess(false);
+            dispose();
         }
     }
 

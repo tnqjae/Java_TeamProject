@@ -8,10 +8,10 @@ import java.awt.Dimension;
 public class StartFrame extends JFrame{
     private Dimension res;
     public static MusicPlay music;
-    protected ImageIcon startBackground;
-    protected ImageIcon titleImage;
-    protected ImageIcon startButton;
-    protected ImageIcon ruleButton;
+    protected static ImageIcon startBackground;
+    protected static ImageIcon titleImage;
+    protected static ImageIcon startButton;
+    protected static ImageIcon ruleButton;
 
     protected StartFrame(){}
     protected StartFrame(JFrame frame) {

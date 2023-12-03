@@ -7,15 +7,15 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.font.ImageGraphicAttribute;
+import java.util.Currency;
 import java.util.Map;
+import java.util.Random;
 import java.util.Vector;
 
 import static javax.swing.JLayeredPane.PALETTE_LAYER;
 
 public class MapSelection extends ActiveFunction{
-    private String[] mapNames = new String[5];
-
-    public Integer mapsetting[][] = {{1,2,3},
+    private static Integer mapsetting[][] = {{1,2,3},
                                      {4,5,6},
                                      {7,8,9}};
 
@@ -26,19 +26,44 @@ public class MapSelection extends ActiveFunction{
 
     private static boolean[][][] Move = {{{false, true, true, false},{false, true, true, true},{false, false, true, true}},
                                             {{true, true, true, false},{true, true, true, true},{true, false, true, true}},
-                                            {{true, true, false, false},{true, true, false, true},{true, false, false, true}}};
+                                            {{true, true, false, false},{true, true, false, true},{true, true, false, true}}};
 
     public static int currentLocationX = 0;
     public static int currentLocationY= 0;
 
+    private static int []hocCordinate = new int[3];
+
     private ImageIcon mapimg = new ImageIcon("img/map.jpg");
     private static ImageIcon loadingImg = new ImageIcon("img/loading.jpg");
 
+    private static void setHocCordinate(){
+        Random random = new Random();
+        for (int i = 0; i < 3; ++i) {
+            // 1부터 9까지의 무작위 숫자 생성
+            int randomNumber = random.nextInt(9) + 1;
+            hocCordinate[i] = randomNumber;
+        }
+    }
     public static void setCurrentLocation(int x, int y){
         currentLocationX = x; currentLocationY = y;
     }
+    public static int getCurrentLocationX(){
+        return currentLocationX;
+    }
+    public static int getCurrentLocationY(){
+        return currentLocationY;
+    }
     public static void changeState(int x, int y, int locate, boolean state){
         saveWay[x][y][locate] = state;
+        if (locate == 0){
+            saveWay[x - 1][y][2] = true;
+        } else if(locate == 1){
+            saveWay[x][y + 1][3] = true;
+        } else if(locate == 2){
+            saveWay[x + 1][y][0] = true;
+        } else if(locate == 3){
+            saveWay[x][y - 1][1] = true;
+        }
     }
 
     public static boolean getWayState(int locate){
@@ -71,6 +96,7 @@ public class MapSelection extends ActiveFunction{
         });
         GameStart.boldmote.setLocation(x, y - GameStart.boldmote.getHeight() / 2);
     }
+
 
     public MapSelection(){
         Main.setFrame.add(createLabel(mapimg,0,0));

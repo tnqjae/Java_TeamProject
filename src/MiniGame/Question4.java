@@ -81,12 +81,12 @@ public class Question4 extends JFrame {
             JOptionPane.showMessageDialog(this, "Correct!", "정답", JOptionPane.INFORMATION_MESSAGE);
             answerLabel.setText("정답 : " + userAnswer);
             calculateButton.setEnabled(false);
-            SelectMiniGame.success = true;
+            SelectMiniGame.setSuccess(true);
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Wrong, Try Again", "오답", JOptionPane.ERROR_MESSAGE);
             resetFields();
-            SelectMiniGame.success = false;
+            SelectMiniGame.setSuccess(false);
             dispose();
         }
     }

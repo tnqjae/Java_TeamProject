@@ -14,7 +14,11 @@ public class GameStart extends ActiveFunction {
     //Contains the overall content of the game
     private ImageIcon character;
     private static ImageIcon hoc;
+    private static ImageIcon NeginiImg;
     public static JLabel hoclabel;
+    public static JLabel negini;
+    private static int listNum = 0;
+    private static boolean isGetNegini = false;
     public static int sumHoc = 0;
 
     public GameStart(){
@@ -24,7 +28,6 @@ public class GameStart extends ActiveFunction {
         addActiveListener();
 
         Main.setFrame.add(boldmote);
-        addHocImg();
         new MapSelection();
     }
     public void addActiveListener(){
@@ -49,11 +52,23 @@ public class GameStart extends ActiveFunction {
     }
 
     public static void addHocImg(){
-        String hoclist[] = {"img/hoc1.png","img/hoc2.png","img/hoc3.png"};
-        hoc = new ImageIcon(hoclist[0]);
+        String hoclist[] = {"img/hoc1.png","img/hoc2.png"};
+        hoc = new ImageIcon(hoclist[listNum]);
+        listNum += 1;
         Random random = new Random();
-        hoclabel = createLabel(hoc, random.nextInt(700) + 145,400);
+        hoclabel = createLabel(hoc, random.nextInt(700) + 145,random.nextInt(200) + 145);
         Main.setFrame.add(hoclabel);
+    }
+
+    public static void addNeginiImg(){
+        NeginiImg = new ImageIcon("img/negini.png");
+        Random random = new Random();
+        hoclabel = createLabel(NeginiImg, random.nextInt(700) + 145,random.nextInt(200) + 145);
+        Main.setFrame.add(hoclabel);
+    }
+
+    public static void setNeginiState(boolean state){
+        isGetNegini = state;
     }
 
 }

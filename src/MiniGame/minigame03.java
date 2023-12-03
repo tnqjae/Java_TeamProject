@@ -8,9 +8,10 @@ import java.awt.event.ActionListener;
 public class minigame03 {
     private static long startTime;
     private static boolean sc;
-
+    public JFrame frame;
+    public JFrame gameFrame;
     public minigame03(){
-        JFrame frame = new JFrame("Time Attack");
+        frame = new JFrame("Time Attack");
         JButton startButton = new JButton("게임 시작");
         JLabel resultLabel = new JLabel();
 
@@ -35,8 +36,8 @@ public class minigame03 {
         frame.setVisible(true);
     }
 
-    private static void startGame() {
-        JFrame gameFrame = new JFrame("게임");
+    private void startGame() {
+        gameFrame = new JFrame("게임");
         JButton enterButton = new JButton("Enter");
         JLabel infoLabel = new JLabel("10초에 맞춰 <Enter> 버튼을 누르세요 (오차 범위: +-1초 허용)");
 
@@ -64,20 +65,20 @@ public class minigame03 {
         startTime = System.currentTimeMillis();
     }
 
-    private static void checkTime() {
+    private void checkTime() {
         long endTime = System.currentTimeMillis();
         double elapsedTime = (double) ((endTime - startTime) * 0.001);
 
         if (elapsedTime >= 9 && elapsedTime <= 11) {
             JOptionPane.showMessageDialog(null, "성공!");
-            sc = true;
+            SelectMiniGame.setSuccess(true);
+            frame.dispose();
+            gameFrame.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "실패!");
-            sc = false;
+            SelectMiniGame.setSuccess(false);
+            frame.dispose();
+            gameFrame.dispose();
         }
-    }
-
-    public static boolean getSc(){
-        return sc;
     }
 }

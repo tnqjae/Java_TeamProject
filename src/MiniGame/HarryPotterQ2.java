@@ -89,11 +89,11 @@ public class HarryPotterQ2 extends JFrame {
                 spell2.equalsIgnoreCase("크루시오") &&
                 spell3.equalsIgnoreCase("임페리오")) {
             JOptionPane.showMessageDialog(this, "Correct!");
-            SelectMiniGame.success = true;
+            SelectMiniGame.setSuccess(true);
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Wrong, Try Again.");
-            SelectMiniGame.success = false;
+            SelectMiniGame.setSuccess(false);
             dispose();
         }
     }

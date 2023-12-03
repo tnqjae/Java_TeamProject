@@ -58,7 +58,6 @@ public class Question5 extends JFrame {
         buttonPanel.setLayout(new FlowLayout());
         buttonPanel.add(hintButton);
         buttonPanel.add(checkButton);
-        buttonPanel.add(retryButton);
         bottomPanel.add(buttonPanel);
         add(bottomPanel, BorderLayout.SOUTH);
 
@@ -76,12 +75,6 @@ public class Question5 extends JFrame {
             }
         });
 
-        retryButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                resetFields();
-            }
-        });
     }
 
     private void checkAnswer() {
@@ -102,10 +95,13 @@ public class Question5 extends JFrame {
             JOptionPane.showMessageDialog(this, "Correct!", "정답", JOptionPane.INFORMATION_MESSAGE);
             answerLabel.setText("정답 : " + userAnswer);
             checkButton.setEnabled(false);
-            retryButton.setEnabled(true);
+            SelectMiniGame.setSuccess(true);
+            dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Wrong, Try Again", "오답", JOptionPane.ERROR_MESSAGE);
             resetFields();
+            SelectMiniGame.setSuccess(false);
+            dispose();
         }
     }
 

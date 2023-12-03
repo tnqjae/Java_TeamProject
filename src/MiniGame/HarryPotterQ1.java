@@ -69,10 +69,10 @@ public class HarryPotterQ1 extends JFrame {
         
         
         // 사용자 입력이 정답들을 모두 포함하는지 확인
-        boolean isCorrect = true;
+        boolean isCorrect = false;
         for (String correctAnswer : correctAnswers) {
             if (userAnswer.contains(correctAnswer.toLowerCase())) {
-                isCorrect = false;
+                isCorrect = true;
                 break;
             }
         }
@@ -80,11 +80,11 @@ public class HarryPotterQ1 extends JFrame {
         // 정답 여부에 따라 메시지 표시
         if (isCorrect) {
             JOptionPane.showMessageDialog(this, "Correct!");
+            SelectMiniGame.setSuccess(true);
             dispose();
-            SelectMiniGame.success = true;
         } else {
             JOptionPane.showMessageDialog(this, "Wrong!");
-            SelectMiniGame.success = false;
+            SelectMiniGame.setSuccess(false);
             dispose();
         }
     }
