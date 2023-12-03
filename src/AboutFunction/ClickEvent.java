@@ -26,6 +26,7 @@ class RuleClickEvent extends MouseAdapter {
     }
     public void mouseClicked(MouseEvent e) {
         new FrameInit();
+        StartFrame.music.musicStop();
         new DisplayRule();
     };
 }

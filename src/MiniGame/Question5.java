@@ -1,3 +1,5 @@
+package MiniGame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -30,8 +32,6 @@ public class Question5 extends JFrame {
 
         hintButton = new JButton("힌트");
         checkButton = new JButton("정답 확인");
-        retryButton = new JButton("다시 풀기");
-        retryButton.setEnabled(false);
 
         setLayout(new BorderLayout());
 

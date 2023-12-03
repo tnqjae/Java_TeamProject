@@ -1,3 +1,5 @@
+package MiniGame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -34,8 +36,7 @@ public class Question4 extends JFrame {
         answerField = new JTextField();
 
         calculateButton = new JButton("계산하기");
-        retryButton = new JButton("다시 풀기");
-        retryButton.setEnabled(false);
+
 
         setLayout(new GridLayout(9, 2));
 
@@ -52,7 +53,6 @@ public class Question4 extends JFrame {
         add(new JLabel(""));
         add(new JLabel(""));
         add(calculateButton);
-        add(retryButton);
 
         calculateButton.addActionListener(new ActionListener() {
             @Override
@@ -61,12 +61,6 @@ public class Question4 extends JFrame {
             }
         });
 
-        retryButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                resetFields();
-            }
-        });
     }
 
     private void calculateProduct() {
@@ -87,10 +81,13 @@ public class Question4 extends JFrame {
             JOptionPane.showMessageDialog(this, "Correct!", "정답", JOptionPane.INFORMATION_MESSAGE);
             answerLabel.setText("정답 : " + userAnswer);
             calculateButton.setEnabled(false);
-            retryButton.setEnabled(true);
+            SelectMiniGame.success = true;
+            dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Wrong, Try Again", "오답", JOptionPane.ERROR_MESSAGE);
             resetFields();
+            SelectMiniGame.success = false;
+            dispose();
         }
     }
 

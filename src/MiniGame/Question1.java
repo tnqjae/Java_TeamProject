@@ -11,8 +11,8 @@ public class Question1 extends JFrame {
     private JButton hintButton; // 힌트 표시를 위한 버튼
     private JLabel questionLabel;
     private JFrame hintFrame; // 힌트를 표시할 프레임
-
-    private boolean success = false;
+    private boolean success;
+    private boolean flag = false;
     public Question1() {
         setTitle("Question 1");
         setSize(500, 500);
@@ -100,21 +100,22 @@ public class Question1 extends JFrame {
         if (userPassword.equals("5269")) {
             JOptionPane.showMessageDialog(this, "Correct!");
             dispose();
+            success = true;
         } else {
             int option = JOptionPane.showConfirmDialog(this, "Wrong, Try Again", "Incorrect", JOptionPane.YES_NO_OPTION);
             if (option == JOptionPane.YES_OPTION) {
                 // 사용자가 다시 시도하려면 텍스트 필드를 초기화
                 passwordField.setText("");
             }
+            success = false;
         }
     }
-
     // 힌트 표시 메서드
     private void showHint() {
         hintFrame.setVisible(true);
     }
-
-    public static void main(String[] args) {
-        new Question1();
+    public boolean getSuccess(){
+        return false;
     }
+
 }

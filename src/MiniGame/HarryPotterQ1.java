@@ -80,12 +80,13 @@ public class HarryPotterQ1 extends JFrame {
         // 정답 여부에 따라 메시지 표시
         if (isCorrect) {
             JOptionPane.showMessageDialog(this, "Correct!");
+            dispose();
+            SelectMiniGame.success = true;
         } else {
-            int option = JOptionPane.showConfirmDialog(this, "Wrong, Try Again", "Incorrect", JOptionPane.YES_NO_OPTION);
-            if (option == JOptionPane.YES_OPTION)
-                // 사용자가 다시 시도하려면 텍스트 필드를 초기화
-                answerField.setText("");
-            } 
+            JOptionPane.showMessageDialog(this, "Wrong!");
+            SelectMiniGame.success = false;
+            dispose();
+        }
     }
 
     public static void main(String[] args) {

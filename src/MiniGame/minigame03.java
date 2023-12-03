@@ -1,52 +1,83 @@
 package MiniGame;
-import java.util.Scanner;
-public class minigame03 { ////타임어택
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        long a = 0;
-        long b = 0;
-        double result1 = 0;
-        System.out.print("첫번째 도전자님 닉네임을 입력하세요! >>> ");
-        String user1 = sc.next();
 
-        System.out.println(user1 + "님 시작하려면 <Enter>를 누르세요.");
-        sc.nextLine();
-        sc.nextLine();
-        a = System.currentTimeMillis();
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-        System.out.println("10초가 된 것 같으면 <Enter>를 누르세요.");
-        sc.nextLine();
-        b = System.currentTimeMillis();
+public class minigame03 {
+    private static long startTime;
+    private static boolean sc;
 
-        result1 = (double) ((b - a) * 0.001);
+    public minigame03(){
+        JFrame frame = new JFrame("Time Attack");
+        JButton startButton = new JButton("게임 시작");
+        JLabel resultLabel = new JLabel();
 
-        System.out.println("종료시간 : " + result1 + "초");
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                startGame();
+            }
+        });
 
-        long c = 0;
-        long d = 0;
-        double result2 = 0;
+        frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
-        System.out.print("두번째 도전자님 닉네임을 입력하세요! >>> ");
-        String user2 = sc.next();
+        frame.add(Box.createVerticalGlue()); // 상단 여백
+        frame.add(startButton);
+        frame.add(Box.createVerticalGlue()); // 버튼 위 여백
+        frame.add(resultLabel);
+        frame.add(Box.createVerticalGlue()); // 결과 레이블 아래 여백
 
-        System.out.println(user2 + "님 시작하려면 <Enter>를 누르세요.");
-        sc.nextLine();
-        sc.nextLine();
-        c = System.currentTimeMillis();
+        frame.setSize(300, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null); // 화면 중앙에 표시
+        frame.setVisible(true);
+    }
 
-        System.out.println("10초가 된 것 같으면 <Enter>를 누르세요.");
-        sc.nextLine();
-        d = System.currentTimeMillis();
+    private static void startGame() {
+        JFrame gameFrame = new JFrame("게임");
+        JButton enterButton = new JButton("Enter");
+        JLabel infoLabel = new JLabel("10초에 맞춰 <Enter> 버튼을 누르세요 (오차 범위: +-1초 허용)");
 
-        result2 = (double) ((d - c) * 0.001);
+        enterButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                checkTime();
+                gameFrame.dispose();
+            }
+        });
 
-        System.out.println("종료시간 : " + result2 + "초");
+        gameFrame.setLayout(new BoxLayout(gameFrame.getContentPane(), BoxLayout.Y_AXIS));
 
-        if(Math.abs(result1 - 10) < Math.abs(result2 - 10)) {
-            System.out.println(user1 + "님이" + Math.abs(result1-result2) + "차이로 승리하셨습니다!!");
+        gameFrame.add(Box.createVerticalGlue()); // 상단 여백
+        gameFrame.add(infoLabel);
+        gameFrame.add(Box.createVerticalGlue()); // 레이블 위 여백
+        gameFrame.add(enterButton);
+        gameFrame.add(Box.createVerticalGlue()); // 버튼 아래 여백
+
+        gameFrame.setSize(300, 200);
+        gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gameFrame.setLocationRelativeTo(null); // 화면 중앙에 표시
+        gameFrame.setVisible(true);
+
+        startTime = System.currentTimeMillis();
+    }
+
+    private static void checkTime() {
+        long endTime = System.currentTimeMillis();
+        double elapsedTime = (double) ((endTime - startTime) * 0.001);
+
+        if (elapsedTime >= 9 && elapsedTime <= 11) {
+            JOptionPane.showMessageDialog(null, "성공!");
+            sc = true;
         } else {
-            System.out.println(user2 + "님이" + Math.abs(result2-result1) + "차이로 승리하셨습니다!!");
+            JOptionPane.showMessageDialog(null, "실패!");
+            sc = false;
         }
+    }
 
+    public static boolean getSc(){
+        return sc;
     }
 }
