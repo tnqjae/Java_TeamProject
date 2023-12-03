@@ -2,10 +2,9 @@ package MainFrame;
 
 import AboutFunction.ActiveFunction;
 import AboutFunction.KeyboardEvent;
-import MainFrame.Main;
 
 import javax.swing.*;
-import AboutFunction.MapSelection;
+import AboutFunction.AboutMapfunction;
 
 import java.util.Random;
 
@@ -28,7 +27,7 @@ public class GameStart extends ActiveFunction {
         addActiveListener();
 
         Main.setFrame.add(boldmote);
-        new MapSelection();
+        new AboutMapfunction();
     }
     public void addActiveListener(){
         KeyboardEvent keyboardEvent = new KeyboardEvent(); // MainFrame.GameStart 인스턴스 전달

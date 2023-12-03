@@ -6,15 +6,9 @@ import MainFrame.Main;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.font.ImageGraphicAttribute;
-import java.util.Currency;
-import java.util.Map;
 import java.util.Random;
-import java.util.Vector;
 
-import static javax.swing.JLayeredPane.PALETTE_LAYER;
-
-public class MapSelection extends ActiveFunction{
+public class AboutMapfunction extends ActiveFunction{
     private static Integer mapsetting[][] = {{1,2,3},
                                      {4,5,6},
                                      {7,8,9}};
@@ -66,6 +60,7 @@ public class MapSelection extends ActiveFunction{
         }
     }
 
+
     public static boolean getWayState(int locate){
         return saveWay[currentLocationX][currentLocationY][locate];
     }
@@ -97,8 +92,7 @@ public class MapSelection extends ActiveFunction{
         GameStart.boldmote.setLocation(x, y - GameStart.boldmote.getHeight() / 2);
     }
 
-
-    public MapSelection(){
+    public AboutMapfunction(){
         Main.setFrame.add(createLabel(mapimg,0,0));
     }
 

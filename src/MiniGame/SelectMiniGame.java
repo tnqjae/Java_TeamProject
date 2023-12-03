@@ -1,6 +1,6 @@
 package MiniGame;
 
-import AboutFunction.MapSelection;
+import AboutFunction.AboutMapfunction;
 
 import java.util.Random;
 
@@ -20,7 +20,7 @@ public class SelectMiniGame {
     }
 
     public static void setSuccess(boolean success) {
-        MapSelection.changeState(MapSelection.getCurrentLocationX(), MapSelection.getCurrentLocationY(), getLocate(), success);
+        AboutMapfunction.changeState(AboutMapfunction.getCurrentLocationX(), AboutMapfunction.getCurrentLocationY(), getLocate(), success);
     }
 
     public void selectRandomMiniGame() {
