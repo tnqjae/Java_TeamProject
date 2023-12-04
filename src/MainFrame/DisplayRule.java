@@ -13,11 +13,11 @@ public class DisplayRule extends ActiveFunction {
     private ImageIcon ruleBackground;
     private ImageIcon backbutton;
     public DisplayRule(){
-        ruleBackground = new ImageIcon("./img/ruleBackground.jpeg");
+        ruleBackground = new ImageIcon("./img/ruleimg.png");
         backbutton = new ImageIcon("img/back_button.png");
         JLabel rulebg = createLabel(ruleBackground, 0,0);
 
-        JLabel backbtn = createLabel(backbutton,200,400);
+        JLabel backbtn = createLabel(backbutton,0,500);
         addEventListener(backbtn, new BackButton());
 
         Main.setFrame.add(backbtn);

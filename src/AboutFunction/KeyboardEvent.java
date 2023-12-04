@@ -84,6 +84,33 @@ public class KeyboardEvent extends KeyAdapter {
             y += 10;
         }
 
+
+        if (GameStart.hoclabel != null && mc.isCollidingWithObstacle(x, y, GameStart.hoclabel.getBounds())) {
+            GameStart.removeHoclabel();
+            GameStart.sumHoc += 1;
+        }
+
+        if (GameStart.hoclabel2 != null && mc.isCollidingWithObstacle(x, y, GameStart.hoclabel2.getBounds())) {
+            GameStart.removeHoclabel2();
+            GameStart.sumHoc += 1;
+        }
+
+        if (GameStart.negini != null && mc.isCollidingWithObstacle(x, y, GameStart.negini.getBounds())) {
+            GameStart.removeNeginilabel();
+            GameStart.sumHoc += 1;
+            GameStart.setNeginiState(true);
+        }
+
+        if(mc.coversCoordinates(x,y,1170, 370) && currentLocX == 2 && currentLocY == 2) {
+            if(GameStart.getNeginiState() == false) {
+                JOptionPane.showMessageDialog(null, "네기니를 수집하지 않았습니다."
+                + "보스전을 진행할 수 없습니다.");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "보스전");
+                new EnterToScore();
+            }
+        }
         // Modify the position if it goes out of the JFrame area.
         if (mc.isWithinBounds(x, y, GameStart.boldmote.getWidth(), GameStart.boldmote.getHeight())) {
             GameStart.boldmote.setLocation(x, y);
@@ -117,6 +144,8 @@ public class KeyboardEvent extends KeyAdapter {
                 SelectMiniGame.setLocate(3);
             }
 
+
+
             if (mc.coversCoordinates(x, y, 600, 10) && AboutMapfunction.canMove(currentLocX,currentLocY, 0)){
                 JOptionPane.showMessageDialog(null, "다음 맵으로 이동");
                 moveCordinate(0);
@@ -126,6 +155,7 @@ public class KeyboardEvent extends KeyAdapter {
                 JOptionPane.showMessageDialog(null, "다음 맵으로 이동");
                 moveCordinate(1);
                 AboutMapfunction.loading(210,370);
+
             }
             else if(mc.coversCoordinates(x,y,600, 700) && AboutMapfunction.canMove(currentLocX,currentLocY, 2)) {
                 JOptionPane.showMessageDialog(null, "다음 맵으로 이동");
@@ -136,18 +166,6 @@ public class KeyboardEvent extends KeyAdapter {
                 JOptionPane.showMessageDialog(null, "다음 맵으로 이동");
                 moveCordinate(3);
                 AboutMapfunction.loading(900,260);
-            }
-
-            if (GameStart.hoclabel != null && mc.isCollidingWithObstacle(x, y, GameStart.hoclabel.getBounds())) {
-                GameStart.removeHoclabel();
-                GameStart.sumHoc += 1;
-                System.out.println(GameStart.sumHoc);
-            }
-            if (GameStart.negini != null && mc.isCollidingWithObstacle(x, y, GameStart.negini.getBounds())) {
-                GameStart.removeHoclabel();
-                GameStart.sumHoc += 1;
-                GameStart.setNeginiState(true);
-                System.out.println(GameStart.sumHoc);
             }
             // 이미지 변경 메서드 호출
             changeImages(keyCode);

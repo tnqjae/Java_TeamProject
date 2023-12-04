@@ -1,3 +1,5 @@
+package AboutFunction;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -28,7 +30,7 @@ public class EnterToScore extends JFrame {
 
     private static final String[] QUIZ = {"봄바르다 맥시마", "콘프링고", "에바테 스타툼", "엑스 펄소","실렌시오","스투페파이","섹튬셈프라","옵스큐로","퍼넌큘러스"};
     private static final int TIMER_INTERVAL = 10;
-    static int hok = 3;
+    static int hok = 1;
     private static final int SPEED = 12-hok*2;
 
 
@@ -266,6 +268,9 @@ public class EnterToScore extends JFrame {
         System.exit(0);
     }
 
+    public void setHok(int hok){
+        this.hok = hok;
+    }
     public static void main(String[] args) {
         SwingUtilities.invokeLater(EnterToScore::new);
     }
